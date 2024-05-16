@@ -63,9 +63,12 @@ else {
   var stickyBar = document.querySelector(stickyBarMovile);
   fullScreenModal = true;
 };
+
 var modalButton = document.createElement('button');
 modalButton.id = 'openModalBtn';
 modalButton.textContent = 'Open Modal';
+modalButton.style.borderRadius = '8px';
+modalButton.style.marginTop = '20px';
 stickyBar.appendChild(modalButton);
 
 var modalHTML = `
@@ -193,15 +196,18 @@ const cssSection3 = `
   z-index: 1;
 }
 
+.text-container {
+  z-index: 3;
+  background-color: white;
+}
+
 .proposition p {
   text-align: center;
   padding: 10px;
-  z-index: 2;
 }
 
 .proposition h3 {
   text-align: center;
-  z-index: 2;
 }
 
 @media screen and (max-width: 1200px){
@@ -235,6 +241,7 @@ const cssSection3 = `
     border-top: none;
     border-left: 4px dotted #ccc;
     transform: translateX(-50%);
+    z-index: 1;
   }
 
   .proposition {
@@ -259,12 +266,13 @@ const cssSection3 = `
   }
 
   .value-propositions::after {
-    left: 60%;
+    left: 65%;
     top: 15%;
     bottom: 10%;
     border-top: none;
     border-left: 4px dotted #ccc;
     transform: translateX(-50%);
+    z-index: 1;
   }
 }
 `;
@@ -291,21 +299,21 @@ if (aboutSection) {
       <div class="value-propositions">
         <div class="proposition">
           <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/computer.png" alt="Value 1">
-          <div>
+          <div class="text-container">
             <h3>Header 1</h3>
             <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
           </div>
         </div>
         <div class="proposition">
           <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/delivery.png" alt="Value 2">
-          <div>
+          <div class="text-container">
             <h3>Header 2</h3>
             <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
           </div>
         </div>
         <div class="proposition">
           <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/phone.png" alt="Value 3">
-          <div>
+          <div class="text-container">
             <h3>Header 3</h3>
             <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
           </div>
