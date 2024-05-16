@@ -2,9 +2,9 @@ function makeSidebarSticky() {
 
   console.log('Size of the screen:', window.innerWidth)
 
-  // if (window.innerWidth <= 1024) {
-  //   return;
-  // }
+  if (window.innerWidth <= 1024) {
+    return;
+  }
 
   const sidebar = document.querySelector('div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv');
   const footer = document.querySelector('#rhf.copilot-secure-display');
@@ -68,8 +68,25 @@ div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv {
 
 document.head.appendChild(style);
 
+// var style = document.createElement('style');
+// style.type = 'text/css';
+// style.innerHTML = `
+// div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv::-webkit-scrollbar {
+//   width: 5px; /* Ajusta el ancho del scrollbar */
+// }
 
+// div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv::-webkit-scrollbar-thumb {
+//   background-color: darkgrey;
+//   border-radius: 10px;
+// }
 
+// div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv {
+//   scrollbar-width: thin;
+//   scrollbar-color: darkgrey transparent;
+// }
+// `;
+
+// document.head.appendChild(style);
 //************************************************************************************************************************** */
 
 /* Excercise02 */
@@ -86,7 +103,7 @@ var modalHTML = `
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Modal Title</h2>
-    <p>Este es un texto de ejemplo para el contenido del modal.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae diam hendrerit, commodo purus vitae, lacinia mauris. Quisque pharetra mi vitae velit vulputate posuere. Nunc scelerisque tempor faucibus.</p>
   </div>
 </div>
 `;

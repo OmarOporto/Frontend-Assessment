@@ -1,46 +1,76 @@
 //#zg_left_colleft
+//console.log(document.querySelector('#zg_left_colleft'));
 
 const css = `
+.container-section3 {
+  display: block;
+  width: 100%;
+  margin: 20px 0;  // Ajusta según sea necesario
+  text-align:center;
+}
+
 .value-propositions {
   display: flex;
-  flex-direction: row; /* horizontal por defecto */
+  flex-direction: row;
   justify-content: space-between;
-  gap: 20px; /* Espacio entre las proposiciones */
+  position: relative;
 }
 
 .proposition {
-  flex: 1; /* Cada proposición toma igual espacio */
-  border-right: 2px dotted #ccc; /* Línea punteada entre ítems */
-}
-
-.proposition:last-child {
-  border-right: none; /* No borde en el último ítem */
+  position: relative;
 }
 
 .proposition img {
-  width: 100%; /* Ajusta la imagen al contenedor */
-  display: block; /* Elimina cualquier espacio extra debajo de la imagen */
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.value-propositions::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 15%;
+  top: 40%;
+  border-top: 4px dotted #ccc;
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
 .proposition p {
-  text-align: center; /* Centra el texto debajo de la imagen */
+  text-align: center;
+  padding: 10px;
+}
+
+.proposition h3 {
+  text-align: center;
 }
 
 /* Media query para Tablet: Apila los ítems verticalmente con imagen a la izquierda */
-@media (max-width: 768px) {
+@media screen and (max-width: 759px) and (orientation: portrait) {
   .value-propositions {
     flex-direction: column;
   }
 
-  .proposition {
-    flex-direction: row;
-    align-items: center;
-    border-right: none;
-    border-bottom: 2px dotted #ccc; /* Línea punteada debajo de cada ítem */
+  .proposition img {
+    width: 100%; /* Ajusta el ancho de la imagen para tablets */
   }
 
-  .proposition:last-child {
-    border-bottom: none;
+  .value-propositions::after {
+    left: 42%;
+    top: 15%;
+    bottom: 10%;
+    border-top: none;
+    border-left: 4px dotted #ccc;
+    transform: translateX(-50%);
+  }
+
+  .proposition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }
 
@@ -48,6 +78,23 @@ const css = `
 @media (max-width: 480px) {
   .proposition {
     flex-direction: column;
+  }
+
+  .proposition img {
+    position: relative;
+    z-index: 2;
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .value-propositions::after {
+    left: 60%;
+    top: 15%;
+    bottom: 10%;
+    border-top: none;
+    border-left: 4px dotted #ccc;
+    transform: translateX(-50%);
   }
 }
 `;
@@ -57,24 +104,48 @@ styleSheet.type = 'text/css';
 styleSheet.innerText = css;
 document.head.appendChild(styleSheet);
 
-document.addEventListener('DOMContentLoaded', function() {
-  const aboutSection = document.querySelector('#zg_left_colleft');
+var section3Desktop = '#zg_left_col1';
+var section3Movile = '.a-section.a-padding-base';
+
+if (document.querySelector(section3Desktop)) {
+  var aboutSection = document.querySelector(section3Desktop);
+}
+else {
+  var aboutSection = document.querySelector(section3Movile);
+}
+
+if (aboutSection) {
   const valuePropositionsHTML = `
-    <div class="value-propositions">
-      <div class="proposition">
-        <img src="path/to/image1.jpg" alt="Value 1">
-        <p>Descripción de la proposición de valor 1.</p>
-      </div>
-      <div class="proposition">
-        <img src="path/to/image2.jpg" alt="Value 2">
-        <p>Descripción de la proposición de valor 2.</p>
-      </div>
-      <div class="proposition">
-        <img src="path/to/image3.jpg" alt="Value 3">
-        <p>Descripción de la proposición de valor 3.</p>
+    <div class="container-section3">
+      <h3> Value Propositions </h3>
+      <div class="value-propositions">
+        <div class="proposition">
+          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/computer.png" alt="Value 1">
+          <div>
+            <h3>Header 1</h3>
+            <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
+          </div>
+        </div>
+        <div class="proposition">
+          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/delivery.png" alt="Value 2">
+          <div>
+            <h3>Header 2</h3>
+            <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
+          </div>
+        </div>
+        <div class="proposition">
+          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/phone.png" alt="Value 3">
+          <div>
+            <h3>Header 3</h3>
+            <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
+          </div>
+        </div>
       </div>
     </div>
   `;
-
-  aboutSection.insertAdjacentHTML('afterend', valuePropositionsHTML);
-});
+  aboutSection.insertAdjacentHTML('beforeend', valuePropositionsHTML);
+  console.log('Section added inside');
+}
+else {
+  console.log('Section NOT FOUND')
+}
