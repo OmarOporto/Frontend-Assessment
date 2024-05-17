@@ -1,27 +1,5 @@
-// const sidebar = document.querySelector('#zg_left_col2');
-// const footer = document.querySelector('#navFooter');
-
-// sidebar.style.position = 'sticky';
-// sidebar.style.top = '20px';
-// sidebar.style.backgroundColor = "red"
-
-// window.addEventListener('scroll', function() {
-//   const footerRect = footer.getBoundingClientRect();
-//   const sidebarHeight = sidebar.offsetHeight;
-//   const sidebarRect = sidebar.getBoundingClientRect();
-
-//   if (footerRect.top - sidebarHeight <= 20) { // El '20' es el valor del 'top' del sticky.
-//     sidebar.style.position = 'absolute';
-//     sidebar.style.top = `${window.scrollY + footerRect.top - sidebarHeight - 20}px`; // Ajusta la posición absoluta.
-//   } else {
-//     sidebar.style.position = 'fixed';
-//     sidebar.style.bottom = '20px';
-//   }
-// });
-
 function makeSidebarSticky() {
   const sidebar = document.querySelector('div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv');
-  //const footer = document.querySelector('#rhf.copilot-secure-display');
   const footer = document.querySelector('#navFooter');
 
   if (!sidebar || !footer) {
@@ -29,25 +7,23 @@ function makeSidebarSticky() {
     return;
   }
 
-  const offsetTop = sidebar.offsetTop;
+  const offsetTop = 260;
   const originalWidth = sidebar.offsetWidth + 'px';
-  let isStickyEnabled = window.innerWidth > 1024;
 
   const handleScroll = () => {
-    if (!isStickyEnabled) return;
 
     const footerPosition = footer.getBoundingClientRect().top + window.scrollY;
     const sidebarBottomPosition = window.scrollY + window.innerHeight;
-    const topReference = 275;
+    const totalHeight = document.documentElement.scrollHeight;
+    const BottomComponentHeight = 880;
+    const sidebarHeight = 762;
+    const sidebarBottomMargin = 20;
 
-    if (sidebarBottomPosition >= footerPosition + 125) { // Esta variable y la de topReference estan correlacionadas
-      console.log('TOP:', footerPosition - sidebar.offsetHeight - topReference)
+    if (sidebarBottomPosition >= footerPosition + (window.innerHeight - sidebarHeight - sidebarBottomMargin)) {
       sidebar.style.position = 'absolute';
-      sidebar.style.maxHeight = '100vh';
-      sidebar.style.top = '20px';
-      sidebar.style.top = `${footerPosition - sidebar.offsetHeight - topReference}px`;
-      sidebar.style.zIndex = 20
-    } else if (window.scrollY > offsetTop + 237) {
+      sidebar.style.maxHeight = `${sidebarHeight}px`;
+      sidebar.style.top = `${totalHeight - BottomComponentHeight - sidebarHeight - offsetTop - sidebarBottomMargin}px`;
+    } else if (window.scrollY > offsetTop) {
       sidebar.style.position = 'fixed';
       sidebar.style.top = '20px';
       sidebar.style.width = originalWidth;
@@ -115,9 +91,6 @@ var stickyBarDesktop = 'div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-r
 var stickyBarMovile = '._p13n-zg-nav-tree-all_style_zg-browse-group__88fbz';
 var fullScreenModal = false;
 
-// console.log('Desktop: ', document.querySelector(stickyBarDesktop))
-// console.log('Movile: ', document.querySelector(stickyBarMovile))
-
 if (document.querySelector(stickyBarDesktop)) {
   var stickyBar = document.querySelector(stickyBarDesktop);
 }
@@ -144,7 +117,7 @@ var modalHTML = `
 `;
 document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-var css = `
+var cssModal = `
 .modal {
   display: none;
   position: fixed;
@@ -161,7 +134,9 @@ var css = `
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
 .close {
   color: #aaa;
@@ -175,25 +150,42 @@ var css = `
   text-decoration: none;
   cursor: pointer;
 }
-@media screen and (max-width: 768px) {
-  .modal-content {
-    margin: 0;
+@media screen and (min-width: 768px) {
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: centrer;
+  }
+  .modal-content {
+    margin: auto;
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
 `;
-var styleSheet = document.createElement('style');
-styleSheet.type = 'text/css';
-styleSheet.innerText = css;
-document.head.appendChild(styleSheet);
+const styleSheetModal = document.createElement('style');
+styleSheetModal.type = 'text/css';
+styleSheetModal.innerText = cssModal;
+document.head.appendChild(styleSheetModal);
 
-var modal = document.getElementById('myModal');
-var btn = document.getElementById('openModalBtn');
-var span = document.querySelector('.close');
+const modal = document.getElementById('myModal');
+const btn = document.getElementById('openModalBtn');
+const span = document.querySelector('.close');
 
 btn.onclick = function() {
-  modal.style.display = 'block';if (fullScreenModal) {
+  modal.style.display = 'flex';if (fullScreenModal) {
     document.querySelector('.modal-content').style.margin = '0';
     document.querySelector('.modal-content').style.height = '100%';
     document.querySelector('.modal-content').style.width = '100%';
@@ -220,12 +212,12 @@ document.getElementsByTagName('head')[0].appendChild(metaTag);
 
 /**Excercise 03 */
 
-const cssSection3 = `
-/* Estilos base: orientados a móviles */
-.container-section3 {
+const cssSection = `
+/* Movile First */
+.container-section {
   display: block;
   width: 100%;
-  margin: 20px 0; /* Ajusta según sea necesario */
+  margin: 20px 0;
   text-align: center;
 }
 
@@ -278,7 +270,7 @@ const cssSection3 = `
 }
 
 /* Media query para Tablet */
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 640px) {
 
   .proposition img {
     width: 100%;
@@ -303,7 +295,7 @@ const cssSection3 = `
 }
 
 /* Media query para Desktop */
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 768px) {
   .value-propositions {
     flex-direction: row;
   }
@@ -327,32 +319,31 @@ const cssSection3 = `
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
   .value-propositions::after {
     top: 50%;
   }
 }
-
 `;
 
-const styleSheetSection3 = document.createElement('style');
-styleSheetSection3.type = 'text/css';
-styleSheetSection3.innerText = cssSection3;
-document.head.appendChild(styleSheetSection3);
+const styleSheetSection = document.createElement('style');
+styleSheetSection.type = 'text/css';
+styleSheetSection.innerText = cssSection;
+document.head.appendChild(styleSheetSection);
 
-var section3Desktop = '#zg_left_col1';
-var section3Movile = '.a-section.a-padding-base';
+var sectionDesktopView = '#zg_left_col1';
+var sectionMovileView = '.a-section.a-padding-base';
 
-if (document.querySelector(section3Desktop)) {
-  var aboutSection = document.querySelector(section3Desktop);
+if (document.querySelector(sectionDesktopView)) {
+  var aboutSection = document.querySelector(sectionDesktopView);
 }
 else {
-  var aboutSection = document.querySelector(section3Movile);
+  var aboutSection = document.querySelector(sectionMovileView);
 }
 
 if (aboutSection) {
   const valuePropositionsHTML = `
-    <div class="container-section3">
+    <div class="container-section">
       <h3> Value Propositions </h3>
       <div class="value-propositions">
         <div class="proposition">
@@ -380,7 +371,6 @@ if (aboutSection) {
     </div>
   `;
   aboutSection.insertAdjacentHTML('beforeend', valuePropositionsHTML);
-  console.log('Section added inside');
 }
 else {
   console.log('Section NOT FOUND')
