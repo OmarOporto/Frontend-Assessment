@@ -1,4 +1,4 @@
-//************************************************ Final Version ************************************************************/
+//************************************************ Final Version **************************************************************/
 function makeSidebarSticky() {
   const sidebar = document.querySelector('div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv');
   const footer = document.querySelector('#navFooter');

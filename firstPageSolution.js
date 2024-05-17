@@ -210,7 +210,7 @@ document.getElementsByTagName('head')[0].appendChild(metaTag);
 /** Excercise 03 **/
 
 const cssSection = `
-/* Movile First */
+/* Mobile First */
 .container-section {
   display: block;
   width: 100%;
