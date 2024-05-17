@@ -344,21 +344,21 @@ if (aboutSection) {
       <h3> Value Propositions </h3>
       <div class="value-propositions">
         <div class="proposition">
-          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/computer.png" alt="Value 1">
+          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/img/computer.png" alt="Value 1">
           <div class="text-container">
             <h3>Header 1</h3>
             <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
           </div>
         </div>
         <div class="proposition">
-          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/delivery.png" alt="Value 2">
+          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/img/delivery.png" alt="Value 2">
           <div class="text-container">
             <h3>Header 2</h3>
             <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
           </div>
         </div>
         <div class="proposition">
-          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/phone.png" alt="Value 3">
+          <img src="https://raw.githubusercontent.com/OmarOporto/Frontend-Assessment/main/img/phone.png" alt="Value 3">
           <div class="text-container">
             <h3>Header 3</h3>
             <p>Aliquam aliquam urna in justo aliquet, nec commodo sem imperdiet. Vestibulum sed leo pharetra, suscipit massa non, semper nisi.</p>
@@ -372,4 +372,3 @@ if (aboutSection) {
 else {
   console.log('Section NOT FOUND')
 }
-
