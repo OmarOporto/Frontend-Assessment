@@ -1,3 +1,4 @@
+/** Excercise01 **/
 function makeSidebarSticky() {
   const sidebar = document.querySelector('div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv');
   const footer = document.querySelector('#navFooter');
@@ -77,36 +78,34 @@ if(document.querySelector('#zg_left_col1')) {
   zg_left_col1.style.paddingRight = "0px";
 }
 
-
 if(document.querySelector('#zg_left_colleft')) {
   const zg_left_colleft = document.querySelector('#zg_left_colleft');
   zg_left_colleft.style.width = "calc(-234.6px + 100vw)";
 }
 
-//************************************************************************************************************************** */
+//****************************************************************************************************************************/
+/** Excercise02 **/
 
-/* Excercise02 */
-
-var stickyBarDesktop = 'div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv';
-var stickyBarMovile = '._p13n-zg-nav-tree-all_style_zg-browse-group__88fbz';
-var fullScreenModal = false;
-
-if (document.querySelector(stickyBarDesktop)) {
-  var stickyBar = document.querySelector(stickyBarDesktop);
-}
-else {
-  var stickyBar = document.querySelector(stickyBarMovile);
-  fullScreenModal = true;
-};
-
-var modalButton = document.createElement('button');
+const stickyBarDesktop = 'div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv';
+const stickyBarMovile = '._p13n-zg-nav-tree-all_style_zg-browse-group__88fbz';
+const fullScreenModal = false;
+const modalButton = document.createElement('button');
 modalButton.id = 'openModalBtn';
 modalButton.textContent = 'Open Modal';
 modalButton.style.borderRadius = '8px';
 modalButton.style.marginTop = '20px';
-stickyBar.appendChild(modalButton);
 
-var modalHTML = `
+if (document.querySelector(stickyBarDesktop)) {
+  const stickyBar = document.querySelector(stickyBarDesktop);
+  stickyBar.appendChild(modalButton);
+}
+else {
+  const stickyBar = document.querySelector(stickyBarMovile);
+  fullScreenModal = true;
+  stickyBar.appendChild(modalButton);
+};
+
+const modalHTML = `
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -117,7 +116,7 @@ var modalHTML = `
 `;
 document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-var cssModal = `
+const cssModal = `
 .modal {
   display: none;
   position: fixed;
@@ -202,15 +201,13 @@ window.onclick = function(event) {
   }
 }
 
-var metaTag = document.createElement('meta');
+const metaTag = document.createElement('meta');
 metaTag.name = "viewport";
 metaTag.content = "width=device-width, initial-scale=1";
 document.getElementsByTagName('head')[0].appendChild(metaTag);
 
-
 /****************************************************************************************************************** */
-
-/**Excercise 03 */
+/**Excercise 03 **/
 
 const cssSection = `
 /* Movile First */
@@ -327,18 +324,18 @@ const cssSection = `
 `;
 
 const styleSheetSection = document.createElement('style');
-styleSheetSection.type = 'text/css';
 styleSheetSection.innerText = cssSection;
 document.head.appendChild(styleSheetSection);
 
-var sectionDesktopView = '#zg_left_col1';
-var sectionMovileView = '.a-section.a-padding-base';
+const sectionDesktopView = '#zg_left_col1';
+const sectionMovileView = '.a-section.a-padding-base';
+let aboutSection
 
 if (document.querySelector(sectionDesktopView)) {
-  var aboutSection = document.querySelector(sectionDesktopView);
+  aboutSection = document.querySelector(sectionDesktopView);
 }
 else {
-  var aboutSection = document.querySelector(sectionMovileView);
+  aboutSection = document.querySelector(sectionMovileView);
 }
 
 if (aboutSection) {
