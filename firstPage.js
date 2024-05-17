@@ -1,6 +1,28 @@
+// const sidebar = document.querySelector('#zg_left_col2');
+// const footer = document.querySelector('#navFooter');
+
+// sidebar.style.position = 'sticky';
+// sidebar.style.top = '20px';
+// sidebar.style.backgroundColor = "red"
+
+// window.addEventListener('scroll', function() {
+//   const footerRect = footer.getBoundingClientRect();
+//   const sidebarHeight = sidebar.offsetHeight;
+//   const sidebarRect = sidebar.getBoundingClientRect();
+
+//   if (footerRect.top - sidebarHeight <= 20) { // El '20' es el valor del 'top' del sticky.
+//     sidebar.style.position = 'absolute';
+//     sidebar.style.top = `${window.scrollY + footerRect.top - sidebarHeight - 20}px`; // Ajusta la posición absoluta.
+//   } else {
+//     sidebar.style.position = 'fixed';
+//     sidebar.style.bottom = '20px';
+//   }
+// });
+
 function makeSidebarSticky() {
   const sidebar = document.querySelector('div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv');
-  const footer = document.querySelector('#rhf.copilot-secure-display');
+  //const footer = document.querySelector('#rhf.copilot-secure-display');
+  const footer = document.querySelector('#navFooter');
 
   if (!sidebar || !footer) {
     console.log("Elements not found");
@@ -18,15 +40,21 @@ function makeSidebarSticky() {
     const sidebarBottomPosition = window.scrollY + window.innerHeight;
     const topReference = 275;
 
-    if (sidebarBottomPosition >= footerPosition + 145) {
+    if (sidebarBottomPosition >= footerPosition + 125) { // Esta variable y la de topReference estan correlacionadas
+      console.log('TOP:', footerPosition - sidebar.offsetHeight - topReference)
       sidebar.style.position = 'absolute';
+      sidebar.style.maxHeight = '100vh';
+      sidebar.style.top = '20px';
       sidebar.style.top = `${footerPosition - sidebar.offsetHeight - topReference}px`;
+      sidebar.style.zIndex = 20
     } else if (window.scrollY > offsetTop + 237) {
       sidebar.style.position = 'fixed';
       sidebar.style.top = '20px';
       sidebar.style.width = originalWidth;
+      sidebar.style.maxHeight = '100vh';
     } else {
       sidebar.style.position = 'static';
+      sidebar.style.maxHeight = '100vh';
     }
   };
 
@@ -44,6 +72,40 @@ function makeSidebarSticky() {
 }
 
 makeSidebarSticky();
+
+if(document.querySelector('#rhf.copilot-secure-display')) {
+  const bottomFrame = document.querySelector('#rhf.copilot-secure-display');
+  bottomFrame.style.position = 'relative';
+  bottomFrame.style.left = '210px';
+  bottomFrame.style.maxWidth = 'calc(100vw - 230px)'
+}
+
+if(document.querySelector('#zg_colmask')) {
+  const zg_colmask = document.querySelector('#zg_colmask');
+  zg_colmask.style.overflow = "visible";
+}
+
+if(document.querySelector('#zg_left_colmask')) {
+  const zg_left_colmask = document.querySelector('#zg_left_colmask');
+  zg_left_colmask.style.overflow = "visible";
+}
+
+if(document.querySelector('#zg_col1')) {
+  const zg_col1 = document.querySelector('#zg_col1');
+  zg_col1.style.overflow = "visible";
+}
+
+if(document.querySelector('#zg_left_col1')) {
+  const zg_left_col1 = document.querySelector('#zg_left_col1');
+  zg_left_col1.style.width = "calc(-258px + 100vw)";
+  zg_left_col1.style.paddingRight = "0px";
+}
+
+
+if(document.querySelector('#zg_left_colleft')) {
+  const zg_left_colleft = document.querySelector('#zg_left_colleft');
+  zg_left_colleft.style.width = "calc(-234.6px + 100vw)";
+}
 
 //************************************************************************************************************************** */
 
@@ -159,28 +221,32 @@ document.getElementsByTagName('head')[0].appendChild(metaTag);
 /**Excercise 03 */
 
 const cssSection3 = `
+/* Estilos base: orientados a móviles */
 .container-section3 {
   display: block;
   width: 100%;
-  margin: 20px 0;  // Ajusta según sea necesario
-  text-align:center;
+  margin: 20px 0; /* Ajusta según sea necesario */
+  text-align: center;
 }
 
 .value-propositions {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   position: relative;
 }
 
 .proposition {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .proposition img {
   position: relative;
   z-index: 2;
-  width: 50%;
+  width: 40%;
   display: block;
   margin: 0 auto;
 }
@@ -188,11 +254,12 @@ const cssSection3 = `
 .value-propositions::after {
   content: '';
   position: absolute;
-  left: 10%;
-  right: 15%;
-  top: 40%;
-  border-top: 4px dotted #ccc;
-  transform: translateY(-50%);
+  left: 50%;
+  top: 15%;
+  bottom: 10%;
+  border-top: none;
+  border-left: 4px dotted #ccc;
+  transform: translateX(-50%);
   z-index: 1;
 }
 
@@ -210,71 +277,62 @@ const cssSection3 = `
   text-align: center;
 }
 
-@media screen and (max-width: 1200px){
+/* Media query para Tablet */
+@media screen and (min-width: 480px) {
+
+  .proposition img {
+    width: 100%;
+    min-width: 175px;
+  }
 
   .value-propositions::after {
-    content: '';
-    position: absolute;
+    left: 20%;
+    top: 15%;
+    bottom: 10%;
+    border-top: none;
+    border-left: 4px dotted #ccc;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .proposition {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Media query para Desktop */
+@media screen and (min-width: 760px) {
+  .value-propositions {
+    flex-direction: row;
+  }
+
+  .proposition {
+    flex-direction: column;
+  }
+
+  .proposition img {
+    width: 50%;
+    min-height: 195px;
+  }
+
+  .value-propositions::after {
     left: 10%;
     right: 15%;
-    top: 30%;
+    top: 50%;
     border-top: 4px dotted #ccc;
     transform: translateY(-50%);
     z-index: 1;
   }
 }
 
-/* Media query para Tablet: Apila los ítems verticalmente con imagen a la izquierda */
-@media screen and (max-width: 759px){
-  .value-propositions {
-    flex-direction: column;
-  }
-
-  .proposition img {
-    width: 100%;
-  }
-
+@media screen and (min-width: 1200px) {
   .value-propositions::after {
-    left: 42%;
-    top: 15%;
-    bottom: 10%;
-    border-top: none;
-    border-left: 4px dotted #ccc;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-
-  .proposition {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    top: 50%;
   }
 }
 
-/* Media query para Móvil: Apila todo verticalmente */
-@media (max-width: 480px) {
-  .proposition {
-    flex-direction: column;
-  }
-
-  .proposition img {
-    position: relative;
-    z-index: 2;
-    width: 40%;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .value-propositions::after {
-    left: 65%;
-    top: 15%;
-    bottom: 10%;
-    border-top: none;
-    border-left: 4px dotted #ccc;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-}
 `;
 
 const styleSheetSection3 = document.createElement('style');

@@ -149,3 +149,123 @@ if (aboutSection) {
 else {
   console.log('Section NOT FOUND')
 }
+
+
+// const cssSection3 = `
+// .container-section3 {
+//   display: block;
+//   width: 100%;
+//   margin: 20px 0;  // Ajusta según sea necesario
+//   text-align:center;
+// }
+
+// .value-propositions {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   position: relative;
+// }
+
+// .proposition {
+//   position: relative;
+// }
+
+// .proposition img {
+//   position: relative;
+//   z-index: 2;
+//   width: 50%;
+//   display: block;
+//   margin: 0 auto;
+// }
+
+// .value-propositions::after {
+//   content: '';
+//   position: absolute;
+//   left: 10%;
+//   right: 15%;
+//   top: 40%;
+//   border-top: 4px dotted #ccc;
+//   transform: translateY(-50%);
+//   z-index: 1;
+// }
+
+// .text-container {
+//   z-index: 3;
+//   background-color: white;
+// }
+
+// .proposition p {
+//   text-align: center;
+//   padding: 10px;
+// }
+
+// .proposition h3 {
+//   text-align: center;
+// }
+
+// @media screen and (max-width: 1200px){
+
+//   .value-propositions::after {
+//     content: '';
+//     position: absolute;
+//     left: 10%;
+//     right: 15%;
+//     top: 30%;
+//     border-top: 4px dotted #ccc;
+//     transform: translateY(-50%);
+//     z-index: 1;
+//   }
+// }
+
+// /* Media query para Tablet: Apila los ítems verticalmente con imagen a la izquierda */
+// @media screen and (max-width: 759px){
+//   .value-propositions {
+//     flex-direction: column;
+//   }
+
+//   .proposition img {
+//     width: 100%;
+//   }
+
+//   .value-propositions::after {
+//     left: 42%;
+//     top: 15%;
+//     bottom: 10%;
+//     border-top: none;
+//     border-left: 4px dotted #ccc;
+//     transform: translateX(-50%);
+//     z-index: 1;
+//   }
+
+//   .proposition {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//   }
+// }
+
+// /* Media query para Móvil: Apila todo verticalmente */
+// @media (max-width: 480px) {
+//   .proposition {
+//     flex-direction: column;
+//   }
+
+//   .proposition img {
+//     position: relative;
+//     z-index: 2;
+//     width: 40%;
+//     display: block;
+//     margin: 0 auto;
+//   }
+
+//   .value-propositions::after {
+//     left: 65%;
+//     top: 15%;
+//     bottom: 10%;
+//     border-top: none;
+//     border-left: 4px dotted #ccc;
+//     transform: translateX(-50%);
+//     z-index: 1;
+//   }
+// }
+// `;
