@@ -1,4 +1,5 @@
 /** Excercise 04 **/
+
 function getCss() {
   return `
   #tabs-container { width: 100%; padding: 10px; box-sizing: border-box; }
@@ -86,6 +87,7 @@ function getCss() {
   }
   `;
 }
+
 function getTab1Content() {
   return `
 <section class="tab-content-1">
@@ -115,6 +117,7 @@ function getTab1Content() {
 </section>
   `;
 }
+
 function getTab2Content() {
   return `
 <section class="tab-content-2">
@@ -136,6 +139,7 @@ function getTab2Content() {
 </section>
   `;
 }
+
 const TARGET_NODE = '.sc-3ey1l1-0.jaCFLV';
 const elements = document.querySelectorAll(TARGET_NODE);
 const tabElement = document.querySelector('#tabs-container');
@@ -164,6 +168,7 @@ if (elements.length > 1 && tabElement === null) {
     `Thes is not enought elements after "${TARGET_NODE}" in the doom.`
   );
 }
+
 function switchTab(evt, tabName) {
   const tabcontent = document.querySelectorAll('.content');
   tabcontent.forEach((tab) => (tab.style.display = 'none'));
