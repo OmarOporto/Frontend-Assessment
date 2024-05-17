@@ -1,4 +1,4 @@
-/** Excercise01 **/
+/** Excercise 01 **/
 function makeSidebarSticky() {
   const sidebar = document.querySelector('div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv');
   const footer = document.querySelector('#navFooter');
@@ -84,7 +84,7 @@ if(document.querySelector('#zg_left_colleft')) {
 }
 
 //****************************************************************************************************************************/
-/** Excercise02 **/
+/** Excercise 02 **/
 
 const stickyBarDesktop = 'div[role="tree"]._p13n-zg-nav-tree-all_style_zg-browse-root__-jwNv';
 const stickyBarMovile = '._p13n-zg-nav-tree-all_style_zg-browse-group__88fbz';
@@ -206,8 +206,8 @@ metaTag.name = "viewport";
 metaTag.content = "width=device-width, initial-scale=1";
 document.getElementsByTagName('head')[0].appendChild(metaTag);
 
-/****************************************************************************************************************** */
-/**Excercise 03 **/
+/**********************************************************************************************************************/
+/** Excercise 03 **/
 
 const cssSection = `
 /* Movile First */
